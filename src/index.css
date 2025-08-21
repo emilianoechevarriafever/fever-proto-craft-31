@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fever Bowling Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Fever Brand Colors */
+    --primary-500: 214 100% 50%;  /* #0057FF Fever brand blue */
+    --primary-300: 223 100% 66%;  /* #4D7DFF Hover state */
+    --primary-050: 214 100% 95%;  /* #E5F1FF Selected backgrounds */
+    
+    /* Neutral Scale */
+    --neutral-900: 215 75% 16%;   /* #0A1E42 Logo, headings */
+    --neutral-700: 210 15% 25%;   /* #37474F Body text */
+    --neutral-200: 210 20% 90%;   /* #E6EAEE Borders, dividers */
+    --neutral-050: 210 29% 97%;   /* #F5F7F9 Page background */
+    
+    /* Accent Colors */
+    --accent-purple: 248 100% 59%; /* #5333FF Best price indicators */
+    --accent-red: 348 82% 52%;     /* #E3264C Low availability */
+    --success-500: 146 91% 39%;    /* #06C167 Success states */
+    
+    /* Semantic Mappings */
+    --background: var(--neutral-050);
+    --foreground: var(--neutral-900);
+    --card: 0 0% 100%;
+    --card-foreground: var(--neutral-900);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--neutral-900);
+    --primary: var(--primary-500);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--neutral-200);
+    --secondary-foreground: var(--neutral-900);
+    --muted: var(--neutral-200);
+    --muted-foreground: var(--neutral-700);
+    --accent: var(--primary-050);
+    --accent-foreground: var(--primary-500);
+    --destructive: var(--accent-red);
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--neutral-200);
+    --input: var(--neutral-200);
+    --ring: var(--primary-500);
+    --radius: 0.75rem;
+    
+    /* Elevation System */
+    --elevation-01: 0 1px 3px 0 rgba(0,0,0,0.08);
+    --elevation-02: 0 4px 12px 0 rgba(0,0,0,0.12);
+    
+    /* Animation Curves */
+    --ease-out-cubic: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --transition-smooth: all 0.25s var(--ease-out-cubic);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* Fever Component Styles */
+  .fever-card {
+    @apply bg-white rounded-xl shadow-[var(--elevation-01)] border border-border;
+  }
+  
+  .fever-pill-button {
+    @apply rounded-full px-6 py-3 font-semibold transition-all duration-200;
+  }
+  
+  .fever-stepper {
+    @apply flex items-center gap-3 bg-accent rounded-full p-1;
+  }
+  
+  .fever-stepper-btn {
+    @apply w-11 h-11 rounded-full border-2 border-primary flex items-center justify-center transition-transform duration-100 active:scale-110;
+  }
+  
+  .fever-calendar-cell {
+    @apply w-10 h-10 rounded-lg flex items-center justify-center text-sm font-medium transition-all duration-150;
+  }
+  
+  .fever-calendar-selected {
+    @apply border-2 border-primary bg-accent text-accent-foreground relative;
+  }
+  
+  .fever-game-card {
+    @apply fever-card p-4 cursor-pointer transition-all duration-150 hover:shadow-[var(--elevation-02)];
+  }
+  
+  .fever-game-card-selected {
+    @apply bg-accent border-l-4 border-l-primary;
+  }
+  
+  .fever-bottom-sheet {
+    @apply fixed inset-x-0 bottom-0 bg-white rounded-t-2xl shadow-[var(--elevation-02)] transform transition-transform duration-300;
+  }
+  
+  .fever-segmented-control {
+    @apply flex bg-muted rounded-lg p-1;
+  }
+  
+  .fever-segment {
+    @apply flex-1 py-2 px-4 text-center rounded-md text-sm font-medium transition-all duration-150;
+  }
+  
+  .fever-segment-active {
+    @apply bg-white text-foreground shadow-sm;
+  }
+  
+  /* Typography Classes */
+  .fever-h1 {
+    @apply text-[22px] leading-7 font-semibold text-foreground;
+  }
+  
+  .fever-h2 {
+    @apply text-xl leading-6 font-semibold text-foreground;
+  }
+  
+  .fever-body1 {
+    @apply text-base leading-6 text-muted-foreground;
+  }
+  
+  .fever-body2 {
+    @apply text-sm leading-5 text-muted-foreground;
+  }
+  
+  .fever-caption {
+    @apply text-xs leading-4 font-medium text-muted-foreground;
+  }
+  
+  /* Animations */
+  .fever-slide-up {
+    animation: slideUp 250ms var(--ease-out-cubic);
+  }
+  
+  .fever-fade-in {
+    animation: fadeIn 200ms ease-out;
+  }
+  
+  .fever-scale-in {
+    animation: scaleIn 100ms ease-out;
+  }
+  
+  /* Hide scrollbar for horizontal scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+  
+  /* Ensure body scroll is restored properly */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Prevent body scroll when modal is open */
+  body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
